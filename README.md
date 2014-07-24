@@ -13,6 +13,10 @@ USAGE
 
 Requires [gpm v1.1.1](https://github.com/pote/gpm/releases/tag/v1.1.1) which introduces gpm plugins.
 
+## Usage
+
+![gpm all](./gpm_all.gif)
+
 ## Installation
 
 ### With Homebrew
