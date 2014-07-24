@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -eu
+
+usage() {
+cat << EOF
+SYNOPSIS
+
+      gpm-all is a [gpm](https://github.com/pote/gpm) plugin that runs all Godeps
+      files in the current directory, this is done so developers can have a Godeps,
+      Godeps.dev, or any other kind of separation they choose in their dependencies.
+
+USAGE
+      $ gpm all           # Downloads all external top-level packages required by
+                          # your application and generates a Godeps file with their
+                          # latest tags or revisions.
+      $ gpm all version   # Prints version information for the plugin.
+      $ gpm all help      # Prints this message.
+EOF
+}
+
+
+case "${1:-"install"}" in
+  "install")
+    for file in *
+    do
+      if [[ $file =~ 'Godeps' ]]
+      then
+        echo ">> [gpm-all] Installing dependencies in '$file'"
+        gpm install $file
+      fi
+    done
+    ;;
+  "version")
+    echo ">> gpm-all v0.0.1"
+    ;;
+  "help")
+    usage
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac
