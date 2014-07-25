@@ -22,13 +22,10 @@ EOF
 
 case "${1:-"install"}" in
   "install")
-    for file in *
+    for file in Godeps*
     do
-      if [[ $file =~ 'Godeps' ]]
-      then
         echo ">> [gpm-all] Installing dependencies in '$file'"
         gpm install $file
-      fi
     done
     ;;
   "version")
